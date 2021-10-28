@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prévisions météo du jour{% endblock %}
+
+{% block body %}
+<div class="container">
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+    <div class="row">
+        <div class="col">
+            <h1>Bienvenue sur la météo des villes</h1>
+            {% for data in datas %}
+                <div class="d-flex">
+                    <div class="flex-shrink-0">
+                     <a href="{{ path('weather_select', {'index':loop.index0}) }}">
+                        <img src="{{asset('images/' ~ data.weather) }}.png" width="64" height="64" class="mr-3" alt="Image de Météo de {{data.city}}">
+                     </a>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h5 class="mt-0">{{data.city}}</h5>
+                        {{data.date | date('d-m') }} : {{data.min}} °C / {{data.max}} °C
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            {% include 'weather/_widget.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

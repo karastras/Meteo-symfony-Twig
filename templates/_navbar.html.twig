@@ -1,0 +1,7 @@
+<header>
+    <nav class="nav nav-pills mt-2">
+        <a class="nav-link {% if app.request.attributes.get('_route') == 'weather_index' %} active {% endif %}" href="{{ path('weather_index') }}">Accueil</a>
+        <a class="nav-link {% if app.request.attributes.get('_route') == 'weather_mountain' %} active {% endif %}" href="{{ path('weather_mountain') }}">Montagne</a>
+        <a class="nav-link {% if app.request.attributes.get('_route') == 'weather_beach' %} active {% endif %}" href="{{ path('weather_beach') }}">Plages</a>
+    </nav>
+</header>

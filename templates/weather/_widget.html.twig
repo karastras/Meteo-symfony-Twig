@@ -1,0 +1,18 @@
+{% if selectedCity %}
+    <div class="d-flex">
+        <div class="flex-shrink-0">
+            <h5 class="mt-0">{{selectedCity.city}}</h5>
+            <p>{{selectedCity.date}}</p>
+            <img src="{{asset('images/' ~ selectedCity.weather) }}.png" width="64" height="64" class="mr-3" alt="Image de Météo de {{selectedCity.city}}">
+            <p>{{selectedCity.min}} °C / {{selectedCity.max}} °C</p>
+        </div>
+        <div class="flex-grow-1 ms-3">
+        </div>
+    </div>
+{% else %}
+    <p>
+        <a class="text-danger" href="{{ path('weather_index') }}">
+            Sélectionnez une ville dans la ville de gauche
+        </a>
+    </p>
+{% endif %}
